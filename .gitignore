@@ -1,5 +1,6 @@
 library_manager/db.sqlite3
 library_manager/library_manager/__pycache__/*
+library_manager/library_manager_app/__pycache__/*
 .vscode
 media
 

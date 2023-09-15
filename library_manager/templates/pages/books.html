@@ -16,6 +16,7 @@
             <div class="card card-solid">
                 <div class="card-body pb-0">
                     <div class="row d-flex align-items-stretch">
+                        {% for book in books %}
                         <!-- Books beginning -->
                         <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch">
                             <div id="" class="card bg-light">
@@ -25,14 +26,22 @@
                                 <div class="card-body pt-0">
                                     <div class="row">
                                         <div class="col-7">
-                                            <h2 class="lead"><b>Book name</b></h2>
+                                            <h2 class="lead"><b>{{book.title}}</b></h2>
                                             <ul class="fa-ul text-muted">
-                                                <li class="small"><span class="fa-li"></span>Status: Available</li>
-                                                <li class="small"><span class="fa-li"></span>Price: 500</li>
+                                                <li class="small"><span class="fa-li"></span>Status: {{book.status}}</li>
+                                                {% if book.price %}
+                                                <li class="small"><span class="fa-li"></span>Price: {{book.price}} $</li>
+                                                {% elif book.rental_price %}
+                                                <li class="small"><span class="fa-li"></span>Rental Price: {{book.rental_price}} $</li>
+                                                {% endif %}
                                             </ul>
                                         </div>
                                         <div class="col-5 text-center">
+                                            {% if book.photo_book %}
+                                            <img style="height: 120px; width: 120px;" src="{{book.photo_book.url}}" alt="" class="img-circle img-fluid">
+                                            {% else %}
                                             <img style="height: 120px; width: 120px;" src="{% static 'dist/img/photo1.png' %}" alt="" class="img-circle img-fluid">
+                                            {% endif %}
                                         </div>
                                     </div>
                                 </div>
@@ -49,271 +58,7 @@
                             </div>
                         </div>
                         <!-- End of book -->
-                        <!-- Books beginning -->
-                        <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch">
-                            <div id="" class="card bg-light">
-                                <div class="card-header text-muted border-bottom-0">
-                                    Book classification
-                                </div>
-                                <div class="card-body pt-0">
-                                    <div class="row">
-                                        <div class="col-7">
-                                            <h2 class="lead"><b>Book name</b></h2>
-                                            <ul class="fa-ul text-muted">
-                                                <li class="small"><span class="fa-li"></span>Status: Available</li>
-                                                <li class="small"><span class="fa-li"></span>Price: 500</li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-5 text-center">
-                                            <img style="height: 120px; width: 120px;" src="{% static 'dist/img/photo1.png' %}" alt="" class="img-circle img-fluid">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="text-left">
-                                        <a href="#" class="btn btn-sm bg-danger">
-                                            <i class="fas fa-trash"></i>
-                                        </a>
-                                        <a href="#" class="btn btn-sm btn-primary">
-                                            <i class="fas fa-book"></i> Edit
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End of book -->
-                        <!-- Books beginning -->
-                        <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch">
-                            <div id="" class="card bg-light">
-                                <div class="card-header text-muted border-bottom-0">
-                                    Book classification
-                                </div>
-                                <div class="card-body pt-0">
-                                    <div class="row">
-                                        <div class="col-7">
-                                            <h2 class="lead"><b>Book name</b></h2>
-                                            <ul class="fa-ul text-muted">
-                                                <li class="small"><span class="fa-li"></span>Status: Available</li>
-                                                <li class="small"><span class="fa-li"></span>Price: 500</li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-5 text-center">
-                                            <img style="height: 120px; width: 120px;" src="{% static 'dist/img/photo1.png' %}" alt="" class="img-circle img-fluid">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="text-left">
-                                        <a href="#" class="btn btn-sm bg-danger">
-                                            <i class="fas fa-trash"></i>
-                                        </a>
-                                        <a href="#" class="btn btn-sm btn-primary">
-                                            <i class="fas fa-book"></i> Edit
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End of book -->
-                        <!-- Books beginning -->
-                        <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch">
-                            <div id="" class="card bg-light">
-                                <div class="card-header text-muted border-bottom-0">
-                                    Book classification
-                                </div>
-                                <div class="card-body pt-0">
-                                    <div class="row">
-                                        <div class="col-7">
-                                            <h2 class="lead"><b>Book name</b></h2>
-                                            <ul class="fa-ul text-muted">
-                                                <li class="small"><span class="fa-li"></span>Status: Available</li>
-                                                <li class="small"><span class="fa-li"></span>Price: 500</li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-5 text-center">
-                                            <img style="height: 120px; width: 120px;" src="{% static 'dist/img/photo1.png' %}" alt="" class="img-circle img-fluid">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="text-left">
-                                        <a href="#" class="btn btn-sm bg-danger">
-                                            <i class="fas fa-trash"></i>
-                                        </a>
-                                        <a href="#" class="btn btn-sm btn-primary">
-                                            <i class="fas fa-book"></i> Edit
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End of book -->
-                        <!-- Books beginning -->
-                        <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch">
-                            <div id="" class="card bg-light">
-                                <div class="card-header text-muted border-bottom-0">
-                                    Book classification
-                                </div>
-                                <div class="card-body pt-0">
-                                    <div class="row">
-                                        <div class="col-7">
-                                            <h2 class="lead"><b>Book name</b></h2>
-                                            <ul class="fa-ul text-muted">
-                                                <li class="small"><span class="fa-li"></span>Status: Available</li>
-                                                <li class="small"><span class="fa-li"></span>Price: 500</li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-5 text-center">
-                                            <img style="height: 120px; width: 120px;" src="{% static 'dist/img/photo1.png' %}" alt="" class="img-circle img-fluid">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="text-left">
-                                        <a href="#" class="btn btn-sm bg-danger">
-                                            <i class="fas fa-trash"></i>
-                                        </a>
-                                        <a href="#" class="btn btn-sm btn-primary">
-                                            <i class="fas fa-book"></i> Edit
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End of book -->
-                        <!-- Books beginning -->
-                        <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch">
-                            <div id="" class="card bg-light">
-                                <div class="card-header text-muted border-bottom-0">
-                                    Book classification
-                                </div>
-                                <div class="card-body pt-0">
-                                    <div class="row">
-                                        <div class="col-7">
-                                            <h2 class="lead"><b>Book name</b></h2>
-                                            <ul class="fa-ul text-muted">
-                                                <li class="small"><span class="fa-li"></span>Status: Available</li>
-                                                <li class="small"><span class="fa-li"></span>Price: 500</li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-5 text-center">
-                                            <img style="height: 120px; width: 120px;" src="{% static 'dist/img/photo1.png' %}" alt="" class="img-circle img-fluid">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="text-left">
-                                        <a href="#" class="btn btn-sm bg-danger">
-                                            <i class="fas fa-trash"></i>
-                                        </a>
-                                        <a href="#" class="btn btn-sm btn-primary">
-                                            <i class="fas fa-book"></i> Edit
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End of book -->
-                        <!-- Books beginning -->
-                        <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch">
-                            <div id="" class="card bg-light">
-                                <div class="card-header text-muted border-bottom-0">
-                                    Book classification
-                                </div>
-                                <div class="card-body pt-0">
-                                    <div class="row">
-                                        <div class="col-7">
-                                            <h2 class="lead"><b>Book name</b></h2>
-                                            <ul class="fa-ul text-muted">
-                                                <li class="small"><span class="fa-li"></span>Status: Available</li>
-                                                <li class="small"><span class="fa-li"></span>Price: 500</li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-5 text-center">
-                                            <img style="height: 120px; width: 120px;" src="{% static 'dist/img/photo1.png' %}" alt="" class="img-circle img-fluid">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="text-left">
-                                        <a href="#" class="btn btn-sm bg-danger">
-                                            <i class="fas fa-trash"></i>
-                                        </a>
-                                        <a href="#" class="btn btn-sm btn-primary">
-                                            <i class="fas fa-book"></i> Edit
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End of book -->
-                        <!-- Books beginning -->
-                        <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch">
-                            <div id="" class="card bg-light">
-                                <div class="card-header text-muted border-bottom-0">
-                                    Book classification
-                                </div>
-                                <div class="card-body pt-0">
-                                    <div class="row">
-                                        <div class="col-7">
-                                            <h2 class="lead"><b>Book name</b></h2>
-                                            <ul class="fa-ul text-muted">
-                                                <li class="small"><span class="fa-li"></span>Status: Available</li>
-                                                <li class="small"><span class="fa-li"></span>Price: 500</li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-5 text-center">
-                                            <img style="height: 120px; width: 120px;" src="{% static 'dist/img/photo1.png' %}" alt="" class="img-circle img-fluid">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="text-left">
-                                        <a href="#" class="btn btn-sm bg-danger">
-                                            <i class="fas fa-trash"></i>
-                                        </a>
-                                        <a href="#" class="btn btn-sm btn-primary">
-                                            <i class="fas fa-book"></i> Edit
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End of book -->
-                        <!-- Books beginning -->
-                        <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch">
-                            <div id="" class="card bg-light">
-                                <div class="card-header text-muted border-bottom-0">
-                                    Book classification
-                                </div>
-                                <div class="card-body pt-0">
-                                    <div class="row">
-                                        <div class="col-7">
-                                            <h2 class="lead"><b>Book name</b></h2>
-                                            <ul class="fa-ul text-muted">
-                                                <li class="small"><span class="fa-li"></span>Status: Available</li>
-                                                <li class="small"><span class="fa-li"></span>Price: 500</li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-5 text-center">
-                                            <img style="height: 120px; width: 120px;" src="{% static 'dist/img/photo1.png' %}" alt="" class="img-circle img-fluid">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="text-left">
-                                        <a href="#" class="btn btn-sm bg-danger">
-                                            <i class="fas fa-trash"></i>
-                                        </a>
-                                        <a href="#" class="btn btn-sm btn-primary">
-                                            <i class="fas fa-book"></i> Edit
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End of book -->
-
+                        {% endfor %}
                     </div>
                 </div>
             </div>
