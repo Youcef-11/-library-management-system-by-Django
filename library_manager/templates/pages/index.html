@@ -26,7 +26,11 @@
                 <div class="card-body">
                   <div class="d-flex">
                     <p class="d-flex flex-column">
-                      <span class="text-bold text-lg">500</span>
+                      {% if all_books > 1 %}
+                        <span class="text-bold text-lg">{{all_books}} books</span>
+                      {% else %}
+                        <span class="text-bold text-lg">{{all_book}} books</span>
+                      {% endif %}
                       <span>Total number of books</span>
                     </p>  
                   </div>
@@ -41,6 +45,26 @@
             </div>
             <!-- /.col-md-6 -->
             
+
+            {% for book in books %}
+
+            {% if book.price != None %}
+            {% if book.status == 'sold' %}
+              <p class="total_price"> {{book.price}} </p>
+            {% endif %}
+            {% endif %} 
+
+            {% if book.rental_total_profit != None %}
+            {% if book.status == 'rented' %}
+              <p class="total_price"> {{book.rental_total_profit}} </p>
+            {% endif %}
+            {% endif %} 
+
+            {% endfor %}
+
+
+
+
             <div class="col-lg-6">
               <div class="card">
                 <div class="card-header border-0">
@@ -51,7 +75,7 @@
                 <div class="card-body">
                   <div class="d-flex">
                     <p class="d-flex flex-column">
-                      <span id="totalsalarys" class="text-bold text-lg">$250</span><br></p>
+                      <span id="totalsalarys" class="text-bold text-lg">$</span><br></p>
                   </div>
                   <!-- /.d-flex -->
   
@@ -110,7 +134,7 @@
             <div class="col-4 ">
               <ul class="nav">
                 {% for category in categories|slice:":8" %}
-                <li class="nav-item ">
+                <li class="nav-item cat{{category.id}}">
                   <a id="" class="nav-link bg-primary" href="#">{{category.name}}</a>
                 </li>
                 {% endfor %}
@@ -124,7 +148,7 @@
 
         {% for book in books %}
           <!-- book -->
-              <div id="" class="col-md-4">
+              <div id="" class="col-md-4 bookhide book{{book.category.id}} book{{book.status}}">
                   <!-- Widget: user widget style 1 -->
                 <div id="" class="card card-widget widget-user ">
                   <!-- Add the bg color to the header using any of the bg-* classes -->
