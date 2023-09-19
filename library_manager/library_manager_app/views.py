@@ -32,6 +32,18 @@ def index(request):
 
 
 def books(request):
+    
+    title = None
+    books = Book.objects.all()
+    if 'search_name' in request.GET:
+        title = request.GET['search_name']
+        if title:
+            books = books.filter(title__icontains=title, active=True)
+    
+    
+    
+    
+    
 
     if request.method == 'POST':
         category_form = CategoryForm(request.POST)
@@ -41,8 +53,8 @@ def books(request):
 
 
     context = {
-        'categories': Category.objects.all(), # 'categories' is the key and 'Category.objects.all()' is the value
-        'books': Book.objects.all(),
+        'categories': Category.objects.all(), 
+        'books': books,
         'category_form': CategoryForm(),
     }
     return render(request, 'pages/books.html', context)

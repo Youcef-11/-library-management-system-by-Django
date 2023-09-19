@@ -24,7 +24,7 @@
             <a href="{% url 'books' %}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                New Books
+                All Books
               </p>
             </a>
           </li>
@@ -57,8 +57,16 @@
                     
                   </form>
                 
+                  <li style="cursor: pointer;" class="nav-item cat{{category.id}} allcat">
+                    <a id="" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>All</p>
+                    </a>
+                  </li>
+
+
                   {% for category in categories %}
-                  <li style="cursor: pointer;" class="nav-item cat{{category.id}}">
+                  <li style="cursor: pointer;" class="nav-item cat{{category.id}} catstd">
                     <a id="" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>{{category.name}}</p>
@@ -68,26 +76,36 @@
             </ul>
           </li>
 
-          <li class="nav-header">Borrowed books</li>
-          
-          <li style="cursor: pointer;" class="nav-item statussold">
+          <li class="nav-header">Books status</li>
+        
+
+          <li style="cursor: pointer;" class="nav-item allstatus">
             <a id="statusSold" class="nav-link">
-              <i class="nav-icon far fa-circle text-danger"></i>
-              <p class="text">Sold</p>
+              <i class="nav-icon far fa-circle text-white"></i>
+              <p class="text">All</p>
             </a>
           </li>
-          <li style="cursor: pointer;" class="nav-item statusrented">
-            <a id="" class="nav-link">
-              <i class="nav-icon far fa-circle text-warning"></i>
-              <p>Borrowed</p>
-            </a>
-          </li>
-          <li style="cursor: pointer;" class="nav-item statusavailable">
+          
+          <li style="cursor: pointer;" class="nav-item statusavailable status">
             <a id="" class="nav-link">
               <i class="nav-icon far fa-circle text-info"></i>
               <p>Available</p>
             </a>
           </li>
+
+          <li style="cursor: pointer;" class="nav-item statussold status">
+            <a id="statusSold" class="nav-link">
+              <i class="nav-icon far fa-circle text-danger"></i>
+              <p class="text">Sold</p>
+            </a>
+          </li>
+          <li style="cursor: pointer;" class="nav-item statusrented status">
+            <a id="" class="nav-link">
+              <i class="nav-icon far fa-circle text-warning"></i>
+              <p>Borrowed</p>
+            </a>
+          </li>
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

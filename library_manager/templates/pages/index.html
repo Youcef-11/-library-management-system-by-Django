@@ -50,13 +50,13 @@
 
             {% if book.price != None %}
             {% if book.status == 'sold' %}
-              <p class="total_price"> {{book.price}} </p>
+              <p class="total_price_sold"> {{book.price}} </p>
             {% endif %}
             {% endif %} 
 
             {% if book.rental_total_profit != None %}
             {% if book.status == 'rented' %}
-              <p class="total_price"> {{book.rental_total_profit}} </p>
+              <p class="total_price_rental"> {{book.rental_total_profit}} </p>
             {% endif %}
             {% endif %} 
 
@@ -84,14 +84,20 @@
                   </div>
   
                   <div class="d-flex flex-row justify-content-end">
-                    <span class="mr-2">
-                      <i class="fas fa-square text-primary"></i> Sold books                      <p id="soldtotals"></p>     
+                    <span class="mr-4">
+                        <i class="fas fa-square text-primary"></i>
+                        <span class="text-primary">Sold books</span>
+                        <p id="soldtotals"></p>
                     </span>
-                    <span>
-                      <i class="fas fa-square text-gray"></i> Borrowed books
-                      <p id="rentedtotals"></p>
+                    <span class="mr-4"/>
+                    <span class="ml-4">
+                        <i class="fas fa-square text-gray"></i>
+                        <span class="text-gray">Borrowed books</span>
+                        <p id="rentedtotals"></p>
                     </span>
-                  </div>
+                </div>
+                
+                
                 </div>
               </div>
             </div>
@@ -133,8 +139,12 @@
           <div class="row justify-content-center mb-3">
             <div class="col-4 ">
               <ul class="nav">
-                {% for category in categories|slice:":8" %}
-                <li class="nav-item cat{{category.id}}">
+                <li class="nav-item allcat">
+                  <a id="" class="nav-link bg-primary" href="#">All</a>
+                </li>
+
+                {% for category in categories|slice:":5" %}
+                <li class="nav-item cat{{category.id}} catstd">
                   <a id="" class="nav-link bg-primary" href="#">{{category.name}}</a>
                 </li>
                 {% endfor %}

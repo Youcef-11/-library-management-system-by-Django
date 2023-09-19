@@ -52,16 +52,40 @@
 
     <script>
 
-        $(document).ready(function(){
-            var total = 0;
-            $(".total_price").each(function(){
-                $(this).hide();
-                var total_price = $(this).text();
-                total += parseInt(total_price);
+        function calculateTotal() {
+            var total_sold = 0;
+            var total_rental = 0;
+          
+            $(".total_price_sold").each(function () {
+              $(this).hide();
+              var total_price = $(this).text();
+              total_sold += parseFloat(total_price);
             });
-
-            $("#totalsalarys").text("$"+total);
-        });
+          
+            $(".total_price_rental").each(function () {
+              $(this).hide();
+              var total_price = $(this).text();
+              total_rental += parseFloat(total_price);
+            });
+          
+            return {
+              total_sold: total_sold.toFixed(2),
+              total_rental: total_rental.toFixed(2)
+            };
+          }
+          
+          $(document).ready(function () {
+            var totals = calculateTotal();
+            var total_sold = totals.total_sold;
+            var total_rental = totals.total_rental;
+            var total = parseFloat(total_sold) + parseFloat(total_rental); // Correction ici
+            total = total.toFixed(2);
+          
+            $("#totalsalarys").text("$" + total);
+          });
+          
+          
+          
 
 
 
@@ -73,31 +97,46 @@
             $("#catinput").hide();
         });
 
-        $("#rental_price").keyup(function(){
-            var rental_price = $("#rental_price").val();
-            $("#rental_period").keyup(function(){
-                var rental_period = $("#rental_period").val();
-                var total_rental_price = rental_price * rental_period;
-                $("#rental_total_profit").val(total_rental_price);
-            });
-            
+        function updateTotal() {
+            var rental_price = parseFloat($("#rental_price").val()) || 0; // Convertir en nombre, utiliser 0 si la conversion échoue
+            var rental_period = parseFloat($("#rental_period").val()) || 0; // Convertir en nombre, utiliser 0 si la conversion échoue
+            var total_rental_price = rental_price * rental_period;
+            $("#rental_total_profit").val(total_rental_price);
+          }
+          
+          // Ajouter un écouteur d'événement keyup pour les deux champs
+          $("#rental_price, #rental_period").keyup(updateTotal);
+
+
+
+        $(".catstd").click(function(){
+            $(".bookhide").hide();
+        });
+
+        $(".allcat").click(function(){
+            $(".bookhide").show();
         });
 
 
+        $(".status").click(function(){
+            $(".bookhide").hide();
+        });
 
+        $(".allstatus").click(function(){
+            $(".bookhide").show();
+        });
 
         {% for book in books %}
 
         $(".cat{{book.category.id}}").click(function(){
-            $(".bookhide").hide();
             $(".book{{book.category.id}}").show();
+            {% comment %} alert({{book.category.id}}) {% endcomment %}
         });
-        
 
         $(".status{{book.status}}").click(function(){
-            $(".bookhide").hide();
             $(".book{{book.status}}").show();
         });
+
         {% endfor %}
 
     </script>
@@ -120,6 +159,10 @@
     $(function () {
     'use strict'
     
+    var totals = calculateTotal();
+    var total_sold = totals.total_sold;
+    var total_rental = totals.total_rental;
+
     var ticksStyle = {
         fontColor: '#495057',
         fontStyle: 'bold'
@@ -149,14 +192,14 @@
             backgroundColor: '#007bff',
             borderColor    : '#007bff',
             data           : [ 
-                '50',
+                total_sold,
             ]
             },
             {
             backgroundColor: '#ced4da',
             borderColor    : '#ced4da',
             data           : [ 
-                    '30',
+                total_rental,
             ]
             }
         ]
