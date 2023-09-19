@@ -85,8 +85,6 @@ Follow these steps to set up and run the Library Management System on your local
 
 3. Use the new features to manage user authentication, patron registration, and books with ISBN numbers efficiently.
 
-For more detailed information and usage instructions, please refer to the project documentation or Wiki (if available).
-
 ## Docker
 To run the Library Management System using Docker, follow these steps:
 
