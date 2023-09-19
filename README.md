@@ -52,25 +52,31 @@ Follow these steps to set up and run the Library Management System on your local
     pip install -r requirements.txt
     ```
 
-5. **Migrate the database**:
+5. **Navigate to the library_manager folder**:
+
+    ```bash
+    cd library_manager
+    ```
+
+6. **Migrate the database**:
 
     ```bash
     python manage.py migrate
     ```
 
-6. **Create a superuser account** (for admin access):
+7. **Create a superuser account** (for admin access):
 
     ```bash
     python manage.py createsuperuser
     ```
 
-7. **Run the development server**:
+8. **Run the development server**:
 
     ```bash
     python manage.py runserver
     ```
 
-8. Access the application in your web browser at `http://localhost:8000`.
+9. Access the application in your web browser at `http://localhost:8000`.
 
 ## Usage
 1. Log in as an admin using the superuser credentials created during installation.
