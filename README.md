@@ -11,22 +11,18 @@ A comprehensive Library Management System built with Django, designed to streaml
 - [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Docker](#docker)
 - [Contributing](#contributing)
 - [License](#license)
 
 ## About
 This Library Management System is a web-based application developed using Django, a high-level Python web framework. It offers an intuitive and efficient way to manage library resources, including books, patrons, and borrowing records. Whether you're a librarian or a library enthusiast, this system can help you keep track of your collection and facilitate library operations.
 
-## Features
-- User-friendly web interface for librarians and patrons.
-- Secure user authentication and authorization.
-- Comprehensive book management with details like title, author, ISBN, and more.
-- Patron management, including registration and account management.
-- Check in and check out books efficiently.
-- Keep track of borrowing history and due dates.
-- Search and filter functionality for books and patrons.
-- Responsive design for mobile and desktop use.
-- Easily customizable to suit your specific library's needs.
+## Features (Next Version)
+In the next version, the following features will be available:
+- **Secure User Authentication and Authorization:** Enhanced user security through authentication and authorization mechanisms.
+- **Patron Management:** Including registration and account management for library patrons.
+- **ISBN Support:** Ability to store and manage books with ISBN numbers.
 
 ## Installation
 Follow these steps to set up and run the Library Management System on your local machine:
@@ -34,7 +30,7 @@ Follow these steps to set up and run the Library Management System on your local
 1. **Clone the repository** to your local system:
 
     ```bash
-    git clone https://github.com/Youcef-11/Library-management-system-by-Django
+    git clone https://github.com/Youcef-11/Library-management-system-by-Django.git
     ```
 
 2. **Navigate to the project directory**:
@@ -81,11 +77,27 @@ Follow these steps to set up and run the Library Management System on your local
 
 2. Begin by adding books to the library database.
 
-3. Register patrons and allow them to borrow books.
-
-4. Use the search and filter options to manage and track library resources efficiently.
+3. Use the new features to manage user authentication, patron registration, and books with ISBN numbers efficiently.
 
 For more detailed information and usage instructions, please refer to the project documentation or Wiki (if available).
+
+## Docker
+To run the Library Management System using Docker, follow these steps:
+
+1. Build a Docker image from the provided Dockerfile. Navigate to the project directory containing the Dockerfile and run:
+
+    ```bash
+    docker build -t library-management-system .
+    ```
+
+2. Once the image is built, you can run a Docker container from it with the following command:
+
+    ```bash
+    docker run -p 8000:8000 library-management-system
+    ```
+
+   This will start your Django application within a Docker container, and it will be accessible at `http://localhost:8000`.
+
 
 ## Contributing
 We welcome contributions from the open-source community. To contribute to this project, follow these steps:
@@ -104,5 +116,3 @@ Please read our [Contribution Guidelines](CONTRIBUTING.md) for more details.
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-
