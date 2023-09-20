@@ -20,7 +20,6 @@ This Library Management System is a web-based application developed using Django
 
 ## Features (Next Version)
 In the next version, the following features will be available:
-- **Secure User Authentication and Authorization:** Enhanced user security through authentication and authorization mechanisms.
 - **Patron Management:** Including registration and account management for library patrons.
 - **ISBN Support:** Ability to store and manage books with ISBN numbers.
 
@@ -79,7 +78,7 @@ Follow these steps to set up and run the Library Management System on your local
 9. Access the application in your web browser at `http://localhost:8000`.
 
 ## Usage
-1. Log in as an admin using the superuser credentials created during installation.
+1. Log in as an admin using the superuser credentials created during installation or sign up.
 
 2. Begin by adding books to the library database.
 

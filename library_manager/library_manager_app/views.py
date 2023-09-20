@@ -1,10 +1,16 @@
 from django.shortcuts import render, redirect, get_list_or_404
+from django.contrib.auth.decorators import login_required
 from .models import *
 from .forms import *
+
 # Create your views here.
 
 
 
+# Create your views here.
+
+ 
+@login_required(login_url='login')
 def index(request):
 
     if request.method == 'POST':
@@ -30,7 +36,7 @@ def index(request):
     }
     return render(request, 'pages/index.html', context)
 
-
+@login_required(login_url='login')
 def books(request):
     
     title = None
@@ -59,7 +65,7 @@ def books(request):
     }
     return render(request, 'pages/books.html', context)
 
-
+@login_required(login_url='login')
 def update(request, id):
 
     book_id = Book.objects.get(id=id)
@@ -82,7 +88,7 @@ def update(request, id):
 
     return render(request, 'pages/update.html', context)
 
-
+@login_required(login_url='login')
 def delete(request, id):
     book_to_delete = get_list_or_404(Book, id=id)
     if request.method == 'POST':

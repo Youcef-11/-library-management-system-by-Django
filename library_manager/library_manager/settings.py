@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-mtv1g01pc@tvr+(r=#!a4-6ca^1(wnka7&fzgy^h2flq)3g03s
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0']
+ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1']
 
 
 # Application definition
@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'library_manager_app'
+    'library_manager_app',
+    'authentification',
 ]
 
 MIDDLEWARE = [
@@ -131,3 +132,6 @@ MEDIA_URL = 'media/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+LOGIN_REDIRECT_URL = '/home/'  # Replace '/home/' with the actual URL of your home page.
