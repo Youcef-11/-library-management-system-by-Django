@@ -4,14 +4,15 @@ from .models import *
 from .forms import *
 
 # Create your views here.
-
-
-
-# Create your views here.
-
  
 @login_required(login_url='login')
 def index(request):
+    
+    # Check if the user is authenticated
+    if request.user.is_authenticated:
+        # Access the username of the currently authenticated user
+        username = request.user.username
+        username = username[0].upper() + username[1:].lower()
 
     if request.method == 'POST':
         form = BookForm(request.POST, request.FILES)
@@ -33,11 +34,18 @@ def index(request):
         'soldbooks': Book.objects.filter(status='sold').count(),
         'rentedbooks': Book.objects.filter(status='rented').count(),
         'availablebooks': Book.objects.filter(status='available').count(),
+        'username': username,
     }
     return render(request, 'pages/index.html', context)
 
 @login_required(login_url='login')
 def books(request):
+    
+    # Check if the user is authenticated
+    if request.user.is_authenticated:
+        # Access the username of the currently authenticated user
+        username = request.user.username
+        username = username[0].upper() + username[1:].lower()
     
     title = None
     books = Book.objects.all()
@@ -62,12 +70,20 @@ def books(request):
         'categories': Category.objects.all(), 
         'books': books,
         'category_form': CategoryForm(),
+        'username': username,
     }
     return render(request, 'pages/books.html', context)
 
 @login_required(login_url='login')
 def update(request, id):
 
+
+    # Check if the user is authenticated
+    if request.user.is_authenticated:
+        # Access the username of the currently authenticated user
+        username = request.user.username
+        username = username[0].upper() + username[1:].lower()
+        
     book_id = Book.objects.get(id=id)
 
     if request.method == 'POST':
@@ -83,6 +99,7 @@ def update(request, id):
     context = {
         'form': form,
         'book_id': book_id,
+        'username': username,
     }
 
 
@@ -90,8 +107,18 @@ def update(request, id):
 
 @login_required(login_url='login')
 def delete(request, id):
+    
+    # Check if the user is authenticated
+    if request.user.is_authenticated:
+        # Access the username of the currently authenticated user
+        username = request.user.username
+        username = username[0].upper() + username[1:].lower()
+        
     book_to_delete = get_list_or_404(Book, id=id)
     if request.method == 'POST':
         book_to_delete[0].delete()
         return redirect('/')
-    return render(request, 'pages/delete.html')
+
+    context = {'username': username,}
+    
+    return render(request, 'pages/delete.html', context)
