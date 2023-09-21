@@ -113,7 +113,7 @@ We welcome contributions from the open-source community. To contribute to this p
 
 4. Push your changes to your fork: `git push origin feature/your-feature-name`.
 
-5. Create a pull request to the `main` branch of the original repository.
+5. Create a pull request to the `master` branch of the original repository.
 
 Please read our [Contribution Guidelines](CONTRIBUTING.md) for more details.
 
